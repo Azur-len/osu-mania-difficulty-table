@@ -1,63 +1,55 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>osu! 비트맵 정보</title>
-    <link rel="stylesheet" href="styles.css"> <!-- CSS 파일 연결 -->
-</head>
-<body>
-    <div class="container">
+---
+layout: default
+---
+<div class="container">
+    {% for beatmap in site.data.beatmaps %}
         <div class="header">
             <div class="thumbnail">
-                <img src="https://assets.ppy.sh/beatmaps/1944021/covers/list@2x.jpg" alt="비트맵 썸네일">
+                <img src="{{ beatmap.thumbnail }}" alt="비트맵 썸네일">
             </div>
             <div class="header-info">
-                <h1>아티스트 - 곡 제목 (난이도)</h1>
-                <p>제작자: MapperName</p>
+                <h1>{{ beatmap.artist }} - {{ beatmap.title }} ({{ beatmap.difficulty }})</h1>
+                <p>제작자: {{ beatmap.creator }}</p>
             </div>
             <div class="keys-info">
-                Keys: 7K
+                Keys: {{ beatmap.keys }}
             </div>
         </div>
 
-        <!-- 오른쪽에 회색 상자 영역 -->
         <div class="keys-container">
             <div class="keys-box">
                 <div>
                     <span class="info-label">Time</span><br>
-                    <span class="info-value">3:42</span>
+                    <span class="info-value">{{ beatmap.time }}</span>
                 </div>
                 <div>
                     <span class="info-label">BPM</span><br>
-                    <span class="info-value">180</span>
+                    <span class="info-value">{{ beatmap.bpm }}</span>
                 </div>
             </div>
             <div class="keys-box">
                 <div>
                     <span class="info-label">Rice</span><br>
-                    <span class="info-value">256</span>
+                    <span class="info-value">{{ beatmap.rice }}</span>
                 </div>
                 <div>
                     <span class="info-label">Noodles</span><br>
-                    <span class="info-value">132</span>
+                    <span class="info-value">{{ beatmap.noodles }}</span>
                 </div>
             </div>
             <div class="keys-box">
                 <div>
                     <span class="info-label">HP</span><br>
-                    <span class="info-value">7.5</span>
+                    <span class="info-value">{{ beatmap.hp }}</span>
                 </div>
                 <div>
                     <span class="info-label">OD</span><br>
-                    <span class="info-value">8.0</span>
+                    <span class="info-value">{{ beatmap.od }}</span>
                 </div>
             </div>
             <div class="star-rating">
-                Star Rating: 5.25★
+                Star Rating: {{ beatmap.star_rating }}
             </div>
         </div>
-    </div>
-    <script src="script.js"></script> <!-- JavaScript 파일 연결 -->
-</body>
-</html>
+    {% endfor %}
+</div>
