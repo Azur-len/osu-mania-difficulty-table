@@ -12,7 +12,7 @@ layout: default
                 <p>제작자: {{ beatmap.creator }}</p>
             </div>
             <div class="keys-info">
-                Keys: {{ beatmap.keys }}
+                Keys: 7K <!-- 혹은 데이터 파일에서 동적으로 가져오기 -->
             </div>
         </div>
 
@@ -48,7 +48,7 @@ layout: default
                 </div>
             </div>
             <div class="star-rating">
-                Star Rating: {{ beatmap.star_rating }}
+                Star Rating: {{ beatmap.star_rating }}★
             </div>
         </div>
     {% endfor %}
