@@ -1,0 +1,12 @@
+{
+  "name": "beatmap-fetcher",
+  "version": "1.0.0",
+  "description": "Fetch osu! beatmap data",
+  "main": "fetchBeatmaps.js",
+  "scripts": {
+    "fetch": "node fetchBeatmaps.js"
+  },
+  "dependencies": {
+    "node-fetch": "^2.6.1"
+  }
+}
