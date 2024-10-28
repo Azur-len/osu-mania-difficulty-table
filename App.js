@@ -1,39 +1,45 @@
-import React, { useState, lazy, Suspense } from 'react';
-import './styles.css';
-import { fetchBeatmapData } from './api';
-
-// BeatmapInfo 컴포넌트를 Lazy로 로드
-const BeatmapInfo = lazy(() => import('./components/BeatmapInfo'));
+import React, { useState } from 'react';
+import BeatmapCard from './BeatmapCard';
+import DropZone from './DropZone';
+import { HTML5Backend } from 'react-dnd-html5-backend';
+import { DndProvider } from 'react-dnd';
 
 function App() {
-  const [beatmapUrl, setBeatmapUrl] = useState('');
-  const [beatmapData, setBeatmapData] = useState(null);
-
-  const handleFetchData = async () => {
-    try {
-      const data = await fetchBeatmapData(beatmapUrl);
-      setBeatmapData(data[0]);  // API가 배열을 반환하는 경우 첫 번째 요소 사용
-    } catch (error) {
-      console.error("Error fetching beatmap data");
-    }
-  };
+  const [beatmaps, setBeatmaps] = useState([
+    {
+      title: 'Beatmap 1',
+      artist: 'Artist 1',
+      beatmap_set_id: 12345,
+      beatmap_id: 67890,
+      level: 13,
+      sub_level: 0,
+      creator: 'Creator 1',
+      bpm: 180,
+      length: '00:03:45',
+      hp: 7.5,
+      od: 8.0,
+      star_rating: 4.5,
+      key_count: 7,
+    },
+    // 추가 비트맵 데이터
+  ]);
 
   return (
-    <div className="app">
-      <h1>osu! 비트맵 정보 가져오기</h1>
-      <input
-        type="text"
-        value={beatmapUrl}
-        onChange={(e) => setBeatmapUrl(e.target.value)}
-        placeholder="비트맵 URL을 입력하세요"
-      />
-      <button onClick={handleFetchData}>데이터 가져오기</button>
-
-      {/* 비트맵 데이터를 로드할 때 Suspense로 감쌉니다 */}
-      <Suspense fallback={<div>Loading...</div>}>
-        {beatmapData && <BeatmapInfo data={beatmapData} />}
-      </Suspense>
-    </div>
+    <DndProvider backend={HTML5Backend}>
+      <div className="app">
+        <h1>osu! Beatmap Manager</h1>
+        <div className="beatmap-list">
+          {beatmaps.map((beatmap) => (
+            <BeatmapCard key={beatmap.beatmap_id} beatmap={beatmap} />
+          ))}
+        </div>
+        <div className="drop-zone-list">
+          <DropZone level={13} subLevel={0} />
+          <DropZone level={13} subLevel={5} />
+          {/* 추가적인 DropZone */}
+        </div>
+      </div>
+    </DndProvider>
   );
 }
 
