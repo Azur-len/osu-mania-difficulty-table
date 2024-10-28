@@ -1,12 +1,11 @@
 {
-  "name": "beatmap-fetcher",
-  "version": "1.0.0",
-  "description": "Fetch osu! beatmap data",
-  "main": "fetchBeatmaps.js",
+  "homepage": "https://Azur-len.github.io/osu-beatmap-manager",
   "scripts": {
-    "fetch": "node fetchBeatmaps.js"
-  },
-  "dependencies": {
-    "node-fetch": "^2.6.1"
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   }
 }
