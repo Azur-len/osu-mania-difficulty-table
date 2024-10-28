@@ -1,3 +1,9 @@
+title: "osu! Mania 7K Rice Table"
+description: "osu! 비트맵 데이터를 받아와 카드 형식으로 동적으로 표시"
+baseurl: "" # 사이트 URL 경로 (기본값은 비워두세요)
+url: "https://your-github-username.github.io" # 기본적으로 GitHub Pages URL
+
+
 # Sample workflow for building and deploying a Jekyll site to GitHub Pages
 name: Deploy Jekyll with GitHub Pages dependencies preinstalled
 
