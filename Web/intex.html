@@ -8,6 +8,24 @@
 </head>
 <body>
 
+  ---
+layout: default
+title: "osu! Mania 7K"
+---
+
+<div class="main-page">
+    <div class="input-section">
+        <input type="text" id="beatmap-link" placeholder="osu! 비트맵 링크를 입력하세요" />
+        <button id="fetch-beatmap">비트맵 가져오기</button>
+    </div>
+
+    <div class="card-section">
+        <div id="beatmap-cards" class="card-container">
+            <!-- 비트맵 카드가 동적으로 추가됩니다 -->
+        </div>
+    </div>
+</div>
+
   <!-- 메인 페이지 배경 영상과 제목 -->
   <div class="main-page">
     <video autoplay loop muted class="background-video">
